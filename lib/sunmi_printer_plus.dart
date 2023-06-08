@@ -408,7 +408,7 @@ class SunmiPrinter {
         _fontSize = 18;
         break;
       case SunmiFontSize.MD:
-        _fontSize = 30;
+        _fontSize = 26;
         break;
       case SunmiFontSize.LG:
         _fontSize = 36;
