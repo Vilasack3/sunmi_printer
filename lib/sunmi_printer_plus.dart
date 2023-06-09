@@ -165,6 +165,14 @@ class SunmiPrinter {
     };
     await _channel.invokeMethod("PRINT_ROW", arguments);
   }
+  static Future<void> printCustomRow({required List<CustomWidget> cols}) async {
+    final _jsonCols = List<Map<String, String>>.from(
+        cols.map<Map<String, String>>((CustomWidget col) => col.toJson()));
+    Map<String, dynamic> arguments = <String, dynamic>{
+      "cols": json.encode(_jsonCols)
+    };
+    await _channel.invokeMethod("PRINT_ROW", arguments);
+  }
 
   ///*printRawData*
   ///
