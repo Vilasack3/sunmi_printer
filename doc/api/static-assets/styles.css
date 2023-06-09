@@ -119,7 +119,7 @@ main {
 body {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  font-family: Roboto, sans-serif;
+  font-family: "Phetsarath OT", sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
   color: #111111;
@@ -203,7 +203,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Roboto, sans-serif;
+  font-family: "Phetsarath OT", sans-serif;
   font-weight: 400;
   margin-top: 1.5em;
   color: #111111;
@@ -253,7 +253,7 @@ a:hover {
 }
 
 pre.prettyprint {
-  font-family: 'Roboto Mono', Menlo, monospace;
+  font-family: 'Phetsarath OT', Menlo, monospace;
   color: black;
   border-radius: 0;
   font-size: 15px;
@@ -281,7 +281,7 @@ pre {
 }
 
 code {
-  font-family: 'Roboto Mono', Menlo, monospace;
+  font-family: 'Phetsarath OT', Menlo, monospace;
   /* overriding bootstrap */
   color: inherit;
   padding: 0.2em 0.4em;
@@ -392,12 +392,12 @@ dl dt.callable .name {
 
 .multi-line-signature .type-parameter .parameter {
   margin-left: 0px;
-  display: inline;
+  display: unset;
 }
 
 .parameter-list {
   display: table-cell;
-  margin-left: 1px;
+  margin-left: 10px;
   list-style-type: none;
 }
 
