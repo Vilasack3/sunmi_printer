@@ -39,7 +39,7 @@ dependencies:
   #   sunmi_printer: ^x.y.z
   # See https://dart.dev/tools/pub/dependencies#version-constraints
   # The example app is bundled with the plugin so we use a path dependency on
-  # the parent directory to use the current plugin's version. 
+  # the parent directory to use the current plugin's version.
     path: ../
   esc_pos_utils: ^1.1.0
 
@@ -80,8 +80,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  fonts:
+    - family: NotoSansLao
+      fonts:
+        - asset: assets/fonts/NotoSansLao/NotoSansLao-Regular.ttf
+    - family: Phetsarath_OT
+      fonts:
+        - asset: assets/fonts/Phetsarath_OT.ttf
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

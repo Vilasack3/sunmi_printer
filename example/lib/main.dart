@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:esc_pos_utils/esc_pos_utils.dart';
+import 'package:example/ticket_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sunmi_printer_plus/column_maker.dart';
@@ -13,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeRight]);
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -31,6 +32,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Sunmi Printer',
         theme: ThemeData(
           primaryColor: Colors.black,
+          fontFamily: "Phetsarath_OT",
         ),
         debugShowCheckedModeBanner: false,
         home: const Home());
@@ -83,7 +85,7 @@ class _HomeState extends State<Home> {
     final bool? result = await SunmiPrinter.bindingPrinter();
     return result;
   }
-
+  String spaceString = "                ";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,77 +113,100 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.symmetric(vertical: 2.0),
                 child: Text("Printer version: " + printerVersion),
               ),
+                    ElevatedButton(
+                        onPressed:    printTicket,
+                        child: const Text('Test Print Bills Naga'),),
+              ElevatedButton(
+                        onPressed:    printTicket,
+                        child: const Text('ເພັດຊະລາດ'),),
+
               const Divider(),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 20),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       ElevatedButton(
+              //           onPressed: () async {
+              //             await SunmiPrinter.initPrinter();
+              //             await SunmiPrinter.startTransactionPrint(true);
+              //             await SunmiPrinter.printQRCode(
+              //                 'https://github.com/brasizza/sunmi_printer');
+              //             await SunmiPrinter.lineWrap(2);
+              //             await SunmiPrinter.exitTransactionPrint(true);
+              //           },
+              //           child: const Text('Print qrCode')),
+              //       ElevatedButton(
+              //           onPressed: () async {
+              //             await SunmiPrinter.initPrinter();
+              //             await SunmiPrinter.startTransactionPrint(true);
+              //             await SunmiPrinter.printBarCode('1234567890',
+              //                 barcodeType: SunmiBarcodeType.CODE128,
+              //                 textPosition: SunmiBarcodeTextPos.TEXT_UNDER,
+              //                 height: 20);
+              //             await SunmiPrinter.lineWrap(2);
+              //             await SunmiPrinter.exitTransactionPrint(true);
+              //           },
+              //           child: const Text('Print barCode')),
+              //
+              //     ],
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 20),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //     children: [
+              //       ElevatedButton(
+              //           onPressed: () async {
+              //             await SunmiPrinter.initPrinter();
+              //             await SunmiPrinter.startTransactionPrint(true);
+              //             await SunmiPrinter.line();
+              //             await SunmiPrinter.lineWrap(2);
+              //             await SunmiPrinter.exitTransactionPrint(true);
+              //           },
+              //           child: const Text('Print line')),
+              //       ElevatedButton(
+              //           onPressed: () async {
+              //             await SunmiPrinter.lineWrap(2);
+              //           },
+              //           child: const Text('Wrap line')),
+              //     ],
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.initPrinter();
-                          await SunmiPrinter.startTransactionPrint(true);
-                          await SunmiPrinter.printQRCode(
-                              'https://github.com/brasizza/sunmi_printer');
-                          await SunmiPrinter.lineWrap(2);
-                          await SunmiPrinter.exitTransactionPrint(true);
-                        },
-                        child: const Text('Print qrCode')),
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.initPrinter();
-                          await SunmiPrinter.startTransactionPrint(true);
-                          await SunmiPrinter.printBarCode('1234567890',
-                              barcodeType: SunmiBarcodeType.CODE128,
-                              textPosition: SunmiBarcodeTextPos.TEXT_UNDER,
-                              height: 20);
-                          await SunmiPrinter.lineWrap(2);
-                          await SunmiPrinter.exitTransactionPrint(true);
-                        },
-                        child: const Text('Print barCode')),
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.initPrinter();
-                          await SunmiPrinter.startTransactionPrint(true);
-                          await SunmiPrinter.line();
-                          await SunmiPrinter.lineWrap(2);
-                          await SunmiPrinter.exitTransactionPrint(true);
-                        },
-                        child: const Text('Print line')),
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.lineWrap(2);
-                        },
-                        child: const Text('Wrap line')),
-                  ],
-                ),
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
+                  ElevatedButton(
+                      onPressed: () async {
+                        await SunmiPrinter.initPrinter();
+                        await SunmiPrinter.startTransactionPrint(true);
+                        await SunmiPrinter.printText('Hello I\'m bold',
+                            style: SunmiStyle(bold: true));
+                        await SunmiPrinter.lineWrap(2);
+                        await SunmiPrinter.exitTransactionPrint(true);
+                      },
+                      child: const Text('Bold Text')),
+                  ElevatedButton(
+                      onPressed: () async {
+                        await SunmiPrinter.initPrinter();
+                        await SunmiPrinter.startTransactionPrint(true);
+                        await SunmiPrinter.printText('Very small!',
+                            style: SunmiStyle(fontSize: SunmiFontSize.XS));
+                        await SunmiPrinter.lineWrap(2);
+
+                        await SunmiPrinter.exitTransactionPrint(true);
+                      },
+                      child: const Text('Very small font')),
+                ],),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.initPrinter();
-                          await SunmiPrinter.startTransactionPrint(true);
-                          await SunmiPrinter.printText('Hello I\'m bold',
-                              style: SunmiStyle(bold: true));
-                          await SunmiPrinter.lineWrap(2);
-                          await SunmiPrinter.exitTransactionPrint(true);
-                        },
-                        child: const Text('Bold Text')),
-                    ElevatedButton(
-                        onPressed: () async {
-                          await SunmiPrinter.initPrinter();
-                          await SunmiPrinter.startTransactionPrint(true);
-                          await SunmiPrinter.printText('Very small!',
-                              style: SunmiStyle(fontSize: SunmiFontSize.XS));
-                          await SunmiPrinter.lineWrap(2);
 
-                          await SunmiPrinter.exitTransactionPrint(true);
-                        },
-                        child: const Text('Very small font')),
                     ElevatedButton(
                         onPressed: () async {
                           await SunmiPrinter.initPrinter();
@@ -213,6 +238,14 @@ class _HomeState extends State<Home> {
                           await SunmiPrinter.exitTransactionPrint(true);
                         },
                         child: const Text('Large font')),
+
+                  ],
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,children: [
                     ElevatedButton(
                         onPressed: () async {
                           await SunmiPrinter.initPrinter();
@@ -235,9 +268,7 @@ class _HomeState extends State<Home> {
                           await SunmiPrinter.exitTransactionPrint(true);
                         },
                         child: const Text('Custom size font')),
-                  ],
-                ),
-              ),
+                  ],),),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -288,7 +319,7 @@ class _HomeState extends State<Home> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
@@ -432,7 +463,7 @@ class _HomeState extends State<Home> {
 
                             await SunmiPrinter.printRow(cols: [
                               ColumnMaker(
-                                  text: 'Soda',
+                                  text: 'ການເງິນ',
                                   width: 12,
                                   align: SunmiPrintAlign.LEFT),
                               ColumnMaker(
@@ -560,6 +591,167 @@ class _HomeState extends State<Home> {
             ],
           ),
         ));
+  }
+
+  Future<void> printTicket() async {
+    await SunmiPrinter.initPrinter();
+    await SunmiPrinter.startTransactionPrint(true);
+    await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
+    // printLogo("assets/images/laolotx4.png");
+
+    await SunmiPrinter.lineWrap(1);
+    await SunmiPrinter.printText(
+      'ກະຊວງການເງິນ',
+      style: SunmiStyle(
+        align: SunmiPrintAlign.CENTER,
+        bold: true,
+      ),
+    );
+    await SunmiPrinter.printText(
+      'ບໍລິສັດລັດ ວິສະຫະກິດ ຫວຍພັດທະນາ',
+      style: SunmiStyle(
+        align: SunmiPrintAlign.CENTER,
+        bold: true,
+      ),
+    );
+    await SunmiPrinter.printText(
+      'ຕົວແທນຈຳໜ່າຍ ຫວຍ SMS',
+      style: SunmiStyle(
+        align: SunmiPrintAlign.CENTER,
+        bold: true,
+      ),
+    );
+    await SunmiPrinter.line();
+    await SunmiPrinter.printText("ເລກບິນ: ${billModel['bill_no']}",
+        style: SunmiStyle(
+          bold: true,
+        ));
+    await SunmiPrinter.printText("ຜູ້ຂາຍ: ${billModel['seller_id']}",
+        style: SunmiStyle(
+          bold: true,
+        ));
+
+    await SunmiPrinter.printText("ງວດທີ: ${billModel['draw_no']}",
+        style: SunmiStyle(
+          bold: true,
+        ));
+    await SunmiPrinter.printText("ອອກວັນທີ: ${billModel['draw_date']}",
+        style: SunmiStyle(
+          bold: true,
+        ));
+    await SunmiPrinter.line();
+    // await SunmiPrinter.printRow(
+    //   cols: [
+    //     ColumnMaker(
+    //       text: "ເລກສ່ຽງ",
+    //       width: 30,
+    //     ),
+    //     // ColumnMaker(
+    //     //   text: "ຈຳນວນ",
+    //     //   width: 3,
+    //     // ),
+    //   ],
+    // );
+    await SunmiPrinter.printText("ເລກສ່ຽງ:$spaceStringຈຳນວນ",
+        style: SunmiStyle(
+          bold: true,
+        ));
+    await SunmiPrinter.line();
+    // billModel["digit_model"]!.toString().length;
+    // for (var i = 0; i < digitModel.length; i++) {
+    //   if (i == 25) {
+    //     await SunmiPrinter.cut();
+    //     page++;
+    //   }
+    //   await SunmiPrinter.printText(
+    //     "=${digitModel[i]["digit"]}=$spaceDigit${digitModel[i]["amount"]}",
+    //     style: SunmiStyle(bold: true),
+    //   );
+    //   digitModel.length--;
+    // }
+    // if (digitModel.isNotEmpty) {
+    //   for (var i = 25; i < digitModel.length; i++) {
+    //     await SunmiPrinter.printText(
+    //       '=${digitModel[i]["digit"]}=$spaceDigit${digitModel[i]["amount"]}',
+    //     );
+    //   }
+    // }
+    for (var i = 0; i < digitModel.length; i++) {
+      // await SunmiPrinter.printText(
+      //   "=${digitModel[i]["digit"]}=$spaceDigit${digitModel[i]["amount"]}",
+      //   style: SunmiStyle(fontSize: SunmiFontSize.MD),
+      // );
+      await SunmiPrinter.printRow(cols: [
+        ColumnMaker(
+          text: "=${digitModel[i]["digit"]}=",
+          width: 21,
+          align: SunmiPrintAlign.LEFT,
+        ),
+        ColumnMaker(
+          text: "${digitModel[i]["amount"]}",
+          width: 9,
+          align: SunmiPrintAlign.RIGHT,
+        ),
+      ]);
+    }
+    await SunmiPrinter.line();
+
+    await SunmiPrinter.setCustomFontSize(25);
+    // await SunmiPrinter.bold();
+    await SunmiPrinter.printRow(cols: [
+      ColumnMaker(
+        text: "ລວມເງິນ:",
+        width: 15,
+        align: SunmiPrintAlign.LEFT,
+      ),
+      //
+      ColumnMaker(
+        text: "5.000.000",
+        width: 15,
+        align: SunmiPrintAlign.RIGHT,
+      ),
+    ]);
+    // await SunmiPrinter.printText(
+    //   "ລວມເງິນ:$spaceAmount${"6.000"}",
+    //   style: SunmiStyle(bold: true),
+    // );
+
+    await SunmiPrinter.printText(
+      "ໝົດເຂດຮັບເງິນລາງວັນ: ${"12-06-2023"}",
+      style: SunmiStyle(bold: true),
+    );
+    await SunmiPrinter.printText(
+      "ເບີໂທຕິດຕໍ່: ${"02-06-2023 15:09:45"}",
+      style: SunmiStyle(bold: true),
+    );
+
+    await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
+    await SunmiPrinter.bold();
+    await SunmiPrinter.printBarCode("27120493(098734)",
+                      barcodeType: SunmiBarcodeType.CODE128,
+                      textPosition: SunmiBarcodeTextPos.NO_TEXT,
+                      height: 40);
+
+    await SunmiPrinter.printText(
+      "27120493(098734)",
+      style: SunmiStyle(
+        align: SunmiPrintAlign.CENTER,
+        bold: true,
+      ),
+    );
+    await SunmiPrinter.printText(
+      '* ຫວຍພະຍານາກ ຂໍໃຫ້ທ່ານໂຊກດີ *',
+      style: SunmiStyle(bold: true),
+    );
+    await SunmiPrinter.printText(
+      "92348723948",
+      style: SunmiStyle(
+        align: SunmiPrintAlign.CENTER,
+        bold: true,
+      ),
+    );
+    await SunmiPrinter.lineWrap(3);
+    await SunmiPrinter.exitTransactionPrint(true);
   }
 }
 
