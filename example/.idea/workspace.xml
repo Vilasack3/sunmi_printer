@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="402cd4e4-0e7e-4415-beec-d3ac42a6565c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../doc/api/column_maker/ColumnMaker/ColumnMaker.html" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/api/column_maker/ColumnMaker/ColumnMaker.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../doc/api/static-assets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/api/static-assets/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/fonts/Phetsarath_OT.ttf" beforeDir="false" />
