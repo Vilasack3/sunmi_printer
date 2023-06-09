@@ -397,7 +397,7 @@ dl dt.callable .name {
 
 .parameter-list {
   display: table-cell;
-  margin-left: 10px;
+  margin-left: 1px;
   list-style-type: none;
 }
 
@@ -613,8 +613,8 @@ footer a, footer a:hover {
 }
 
 .multi-line-signature {
-  font-size: 30px;
-  color: #727211;
+  font-size: 17px;
+  color: #727272;
 }
 
 .multi-line-signature .parameter {
