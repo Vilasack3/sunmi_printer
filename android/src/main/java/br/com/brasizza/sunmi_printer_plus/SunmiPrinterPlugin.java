@@ -232,10 +232,10 @@ public class SunmiPrinterPlugin implements FlutterPlugin, MethodCallHandler {
         case "DRAWER_OPENED":
         result.success(sunmiPrinterMethod.timesOpened());
         break;
-      
+
       case "DRAWER_STATUS":
         result.success(sunmiPrinterMethod.drawerStatus());
-      break;  
+      break;
       case "PRINT_ROW":
         String colsStr = call.argument("cols");
 

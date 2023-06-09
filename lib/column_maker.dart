@@ -40,44 +40,4 @@ class ColumnMaker {
     };
   }
 }
-import 'package:flutter/widgets.dart';
-
-class CustomWidget extends Widget {
-  final String title;
-  final int value;
-
-  CustomWidget({required this.title, required this.value});
-
-  @override
-  Element createElement() {
-    return CustomElement(this);
-  }
-}
-
-class CustomElement extends Element {
-  CustomElement(CustomWidget widget) : super(widget);
-
-  @override
-  void update(CustomWidget newWidget) {
-    // Update the widget properties if necessary
-    // Perform any other logic required for updating the element
-    super.update(newWidget);
-  }
-
-  @override
-  Widget build() {
-    CustomWidget customWidget = widget as CustomWidget;
-
-    // Build the UI using customWidget.title and customWidget.value
-    // Return a widget tree representing the desired UI
-    return Container(
-      child: Column(
-        children: [
-          Text(customWidget.title),
-          Text(customWidget.value.toString()),
-        ],
-      ),
-    );
-  }
-}
 
