@@ -9,16 +9,18 @@
   <title>sunmi_printer_plus - Dart API docs</title>
 
 
-  
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao&display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" href="static-assets/github.css?v1">
   <link rel="stylesheet" href="static-assets/styles.css?v1">
   <link rel="icon" href="static-assets/favicon.png?v1">
 
-  
+
 </head>
 
 
@@ -42,7 +44,7 @@
 
 
   <div id="dartdoc-main-content" class="main-content">
-      
+
 <section class="desc markdown">
   <h1 id="sunmi_printer_plus">sunmi_printer_plus</h1>
 <h1 id="this-is-a-fork-from-sunmi_printerhttpspubdevpackagessunmi_printer--but-i-implemented-a-lot-of-other-features-described-below">This is a fork from <a href="https://pub.dev/packages/sunmi_printer">sunmi_printer</a> , but i implemented a lot of other features described below</h1>
@@ -76,7 +78,7 @@ I build this flutter plugin based on this:
 <li><code>-</code> LCD functions</li>
 </ul>
 <h2 id="tested-devices">Tested Devices</h2>
-<pre class="language-bash"><code class="language-bash">Sunmi V2 Pro 
+<pre class="language-bash"><code class="language-bash">Sunmi V2 Pro
 </code></pre>
 <h1 id="you-can-also-combine-this-package-with-the-package-esc_pos_utilshttpspubdevpackagesesc_pos_utils"><strong>You can also combine this package with the package <a href="https://pub.dev/packages/esc_pos_utils">esc_pos_utils</a></strong></h1>
 <p><em>With this package you  <strong>can</strong>  create a custom escpos and than you don't need to use any other command.
@@ -119,12 +121,12 @@ await SunmiPrinter.bindingPrinter(); // must bind the printer first. for more ex
 <h2 id="list-of-enum-printer-status">List of enum printer status</h2>
 <pre class="language-dart"><code class="language-dart">enum PrinterStatus {
   ERROR,
-  NORMAL, 
-  ABNORMAL_COMMUNICATION, 
-  OUT_OF_PAPER, 
+  NORMAL,
+  ABNORMAL_COMMUNICATION,
+  OUT_OF_PAPER,
   PREPARING,
   OVERHEATED,
-  OPEN_THE_LID, 
+  OPEN_THE_LID,
   PAPER_CUTTER_ABNORMAL,
   PAPER_CUTTER_RECOVERED,
   NO_BLACK_MARK,
@@ -135,8 +137,8 @@ await SunmiPrinter.bindingPrinter(); // must bind the printer first. for more ex
 </code></pre>
 <h3 id="list-of-printer-verbose-status">List of printer verbose status</h3>
 <pre class="language-dart"><code class="language-dart">{
-    'ERROR': 'Something went wrong.', 
-    'NORMAL': 'Works normally', 
+    'ERROR': 'Something went wrong.',
+    'NORMAL': 'Works normally',
     'ABNORMAL_COMMUNICATION': 'Abnormal communication',
     'OUT_OF_PAPER': 'Out of paper',
     'PREPARING': 'Preparing printer',
@@ -153,7 +155,7 @@ await SunmiPrinter.bindingPrinter(); // must bind the printer first. for more ex
 <h3 id="list-of-enum-printer-mode">List of enum printer mode</h3>
 <pre class="language-dart"><code class="language-dart">enum PrinterMode {
   NORMAL_MODE,
-  BLACK_LABEL_MODE, 
+  BLACK_LABEL_MODE,
   LABEL_MODE
 }
 </code></pre>
@@ -209,31 +211,31 @@ await SunmiPrinter.bindingPrinter(); // must bind the printer first. for more ex
           <h2>Libraries</h2>
         <dl>
           <dt id="column_maker">
-  <span class="name"><a href="column_maker/column_maker-library.html">column_maker</a></span> 
+  <span class="name"><a href="column_maker/column_maker-library.html">column_maker</a></span>
 
 </dt>
-<dd> 
+<dd>
 </dd>
 
           <dt id="enums">
-  <span class="name"><a href="enums/enums-library.html">enums</a></span> 
+  <span class="name"><a href="enums/enums-library.html">enums</a></span>
 
 </dt>
-<dd> 
+<dd>
 </dd>
 
           <dt id="sunmi_printer_plus">
-  <span class="name"><a href="sunmi_printer_plus/sunmi_printer_plus-library.html">sunmi_printer_plus</a></span> 
+  <span class="name"><a href="sunmi_printer_plus/sunmi_printer_plus-library.html">sunmi_printer_plus</a></span>
 
 </dt>
-<dd> 
+<dd>
 </dd>
 
           <dt id="sunmi_style">
-  <span class="name"><a href="sunmi_style/sunmi_style-library.html">sunmi_style</a></span> 
+  <span class="name"><a href="sunmi_style/sunmi_style-library.html">sunmi_style</a></span>
 
 </dt>
-<dd> 
+<dd>
 </dd>
 
         </dl>
@@ -275,7 +277,7 @@ await SunmiPrinter.bindingPrinter(); // must bind the printer first. for more ex
       2.0.8
   </span>
 
-  
+
 </footer>
 
 

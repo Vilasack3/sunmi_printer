@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 import 'package:esc_pos_utils/esc_pos_utils.dart';
 import 'package:example/ticket_model.dart';
@@ -85,6 +86,7 @@ class _HomeState extends State<Home> {
     final bool? result = await SunmiPrinter.bindingPrinter();
     return result;
   }
+  bool isLoading = false;
   String spaceString = "                ";
   @override
   Widget build(BuildContext context) {
@@ -323,7 +325,10 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
-                      onTap: () async {
+                      onTap:isLoading == true? null : () async {
+                        setState(() {
+                          isLoading = true;
+                        });
                         await SunmiPrinter.initPrinter();
 
                         Uint8List byte =
@@ -333,7 +338,13 @@ class _HomeState extends State<Home> {
                         await SunmiPrinter.startTransactionPrint(true);
                         await SunmiPrinter.printImage(byte);
                         await SunmiPrinter.lineWrap(2);
-                        await SunmiPrinter.exitTransactionPrint(true);
+                        await SunmiPrinter.exitTransactionPrint(true).whenComplete(() {
+                         Future.delayed(Duration(seconds: 10),(){
+                           setState(() {
+                             isLoading = false;
+                           });
+                         });
+                        });
                       },
                       child: Column(
                         children: [
@@ -697,17 +708,16 @@ class _HomeState extends State<Home> {
     await SunmiPrinter.line();
 
     await SunmiPrinter.setCustomFontSize(25);
-    // await SunmiPrinter.bold();
+    await SunmiPrinter.lineWrap(2);
     await SunmiPrinter.printRow(cols: [
       ColumnMaker(
         text: "ລວມເງິນ:",
-        width: 15,
+        width: 20,
         align: SunmiPrintAlign.LEFT,
       ),
-      //
-      ColumnMaker(
-        text: "5.000.000",
-        width: 15,
+    ColumnMaker(
+        text: "50.000.000",
+        width: 10,
         align: SunmiPrintAlign.RIGHT,
       ),
     ]);
@@ -715,6 +725,16 @@ class _HomeState extends State<Home> {
     //   "ລວມເງິນ:$spaceAmount${"6.000"}",
     //   style: SunmiStyle(bold: true),
     // );
+    await SunmiPrinter.printRow(cols: []);
+
+    await SunmiPrinter.printText(
+      "ລວມເງິນ:",
+      style: SunmiStyle(bold: false,align: SunmiPrintAlign.LEFT),
+    );
+    await SunmiPrinter.printText(
+      "5.000",
+      style: SunmiStyle(bold: true,align: SunmiPrintAlign.RIGHT),
+    );
 
     await SunmiPrinter.printText(
       "ໝົດເຂດຮັບເງິນລາງວັນ: ${"12-06-2023"}",
@@ -727,10 +747,10 @@ class _HomeState extends State<Home> {
 
     await SunmiPrinter.setAlignment(SunmiPrintAlign.CENTER);
     await SunmiPrinter.bold();
-    await SunmiPrinter.printBarCode("27120493(098734)",
+    await SunmiPrinter.printBarCode("27120493(098734",
                       barcodeType: SunmiBarcodeType.CODE128,
                       textPosition: SunmiBarcodeTextPos.NO_TEXT,
-                      height: 40);
+                      height: 40,);
 
     await SunmiPrinter.printText(
       "27120493(098734)",
@@ -766,6 +786,8 @@ Future<Uint8List> _getImageFromAsset(String iconPath) async {
   return await readFileBytes(iconPath);
 }
 
+
+
 Future<List<int>> _customEscPos() async {
   final profile = await CapabilityProfile.load();
   final generator = Generator(PaperSize.mm58, profile);
@@ -795,17 +817,17 @@ Future<List<int>> _customEscPos() async {
 
   bytes += generator.row([
     PosColumn(
-      text: 'col3',
+      text: "amount:",
       width: 3,
       styles: const PosStyles(align: PosAlign.center, underline: true),
     ),
     PosColumn(
-      text: 'col6',
+      text: "asdf",
       width: 6,
       styles: const PosStyles(align: PosAlign.center, underline: true),
     ),
     PosColumn(
-      text: 'col3',
+      text: '5.000',
       width: 3,
       styles: const PosStyles(align: PosAlign.center, underline: true),
     ),

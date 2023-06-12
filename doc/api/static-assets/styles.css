@@ -119,7 +119,7 @@ main {
 body {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  font-family: "Phetsarath OT", sans-serif;
+  font-family: Noto Sans Lao;
   font-size: 16px;
   line-height: 1.42857143;
   color: #111111;
@@ -203,7 +203,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Phetsarath OT", sans-serif;
+  font-family: Noto Sans Lao;
   font-weight: 400;
   margin-top: 1.5em;
   color: #111111;
@@ -253,7 +253,7 @@ a:hover {
 }
 
 pre.prettyprint {
-  font-family: 'Phetsarath OT', Menlo, monospace;
+  font-family: 'Noto Sans Lao';
   color: black;
   border-radius: 0;
   font-size: 15px;
@@ -281,7 +281,7 @@ pre {
 }
 
 code {
-  font-family: 'Phetsarath OT', Menlo, monospace;
+  font-family: 'Noto Sans Lao';
   /* overriding bootstrap */
   color: inherit;
   padding: 0.2em 0.4em;
@@ -613,7 +613,7 @@ footer a, footer a:hover {
 }
 
 .multi-line-signature {
-  font-size: 17px;
+  font-size: 27px;
   color: #727272;
 }
 

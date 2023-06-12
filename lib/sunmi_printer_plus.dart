@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
-
 import 'column_maker.dart';
 import 'enums.dart';
 import 'sunmi_style.dart';
